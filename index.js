@@ -7,12 +7,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(
-  cors({
-    origin: ["https://aryanpateldev.github.io", "http://localhost:19006"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
+app.use(cors({
+  origin: ['https://aryanpateldev.github.io', 'http://localhost:19006'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  maxAge: 86400 // Cache preflight requests for 24 hours
+}));
 );app.use(express.json());
 
 // Simple health check endpoint
